@@ -38,7 +38,7 @@ export default function Projects() {
             }}
           >
             {/* Project image */}
-            <div className="relative aspect-[16/10] w-full overflow-hidden">
+            <div className="relative aspect-16/10 w-full overflow-hidden">
               <Image
                 src={project.image}
                 alt={project.name}
@@ -48,10 +48,10 @@ export default function Projects() {
                 preload={index < 3}
               />
               {/* Image overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
 
               {/* Hover glow effect */}
-              <div className="absolute inset-0 bg-white/0 transition-all duration-500 group-hover:bg-white/[0.03]" />
+              <div className="absolute inset-0 bg-white/0 transition-all duration-500 group-hover:bg-white/3" />
             </div>
 
             {/* Content */}
@@ -66,7 +66,7 @@ export default function Projects() {
                 {project.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full bg-white/[0.06] px-3 py-1 text-xs font-light text-text-muted"
+                    className="rounded-full bg-white/6 px-3 py-1 text-xs font-light text-text-muted"
                   >
                     {tech}
                   </span>

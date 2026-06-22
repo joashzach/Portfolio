@@ -114,18 +114,18 @@ export default function Hero() {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="mb-10 flex flex-wrap items-center gap-4"
+            className="mb-10 flex items-center gap-4"
           >
             <button
               onClick={() => handleScrollTo("projects")}
-              className="btn-primary"
+              className="btn-secondary flex-1 justify-center md:flex-none"
             >
               <ArrowDown size={16} />
               View Projects
             </button>
             <button
               onClick={() => handleScrollTo("contact")}
-              className="btn-secondary"
+              className="btn-secondary flex-1 justify-center md:flex-none"
             >
               <Send size={16} />
               Get In Touch
