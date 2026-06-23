@@ -40,21 +40,28 @@ export const portfolioData: PortfolioData = {
 
   skills: [
     {
+      category: "Languages",
+      tools: [
+        "Python",
+        "C++",
+        "Javascript",
+      ],
+    },
+    {
       category: "Frontend",
       tools: [
         "HTML",
         "CSS",
-        "Javascript",
-        "React.js",
+        "React.js"
       ],
     },
     {
       category: "Backend",
-      tools: ["Node.js", "Express.js", "Python", "GraphQL", "REST APIs"],
+      tools: ["Node.js", "Express.js", "Mongoose", "REST APIs"],
     },
     {
       category: "Database & DevOps",
-      tools: ["PostgreSQL", "MongoDB", "Vercel", "Git"],
+      tools: ["PostgreSQL", "MongoDB", "Vercel", "Git", "GitHub"],
     },
   ],
 
@@ -83,6 +90,6 @@ export const portfolioData: PortfolioData = {
   contact: {
     email: "joashzachh7@gmail.com",
     message:
-      "I'm always open to discussing new projects, creative ideas, or opportunities to be part of something amazing. Let's build something great together.",
+      "I'm always open to discussing new projects and good opportunities. Let's build something great together.",
   },
 };
