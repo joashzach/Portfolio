@@ -60,7 +60,7 @@ export const portfolioData: PortfolioData = {
       tools: ["Node.js", "Express.js", "Mongoose", "REST APIs"],
     },
     {
-      category: "Database & DevOps",
+      category: "Database & Deployment",
       tools: ["PostgreSQL", "MongoDB", "Vercel", "Git", "GitHub"],
     },
   ],
