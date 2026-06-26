@@ -84,7 +84,7 @@ export default function Hero() {
 
           <motion.h1
             variants={itemVariants}
-            className="mb-8 text-2xl font-bold tracking-tight md:text-5xl lg:text-5xl"
+            className="mb-8 text-4xl font-bold tracking-tight md:text-5xl lg:text-5xl"
           >
             {hero.name}
           </motion.h1>
@@ -93,7 +93,7 @@ export default function Hero() {
           {/* Intro */}
           <motion.p
             variants={itemVariants}
-            className="mb-7 max-w-2xl text-2xl font-light leading-relaxed text-text-muted"
+            className="mb-7 max-w-2xl text-1xl md:text-2xl font-light leading-relaxed text-text-muted"
           >
             {hero.intro}
           </motion.p>
