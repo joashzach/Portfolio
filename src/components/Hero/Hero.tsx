@@ -77,14 +77,14 @@ export default function Hero() {
           {/* Greeting + Name */}
           <motion.p
             variants={itemVariants}
-            className="mb-3 text-1xl font-semibold tracking-normal md:text-2xl"
+            className="mb-3 text-2xl font-semibold tracking-normal md:text-2xl"
           >
             {hero.greeting}
           </motion.p>
 
           <motion.h1
             variants={itemVariants}
-            className="mb-5 text-4xl font-bold tracking-tight md:text-6xl lg:text-6xl"
+            className="mb-5 text-3xl font-bold tracking-tight md:text-5xl lg:text-5xl"
           >
             {hero.name}
           </motion.h1>
