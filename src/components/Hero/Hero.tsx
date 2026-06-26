@@ -3,15 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown, Send } from "lucide-react";
-import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from "@/components/Icons";
 import { portfolioData } from "@/data/portfolio";
 
-const socialIcons = {
-  github: GithubIcon,
-  linkedin: LinkedinIcon,
-  twitter: TwitterIcon,
-  instagram: InstagramIcon,
-};
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -50,7 +44,7 @@ export default function Hero() {
       className="relative flex items-center px-6 md:px-8"
     >
       <motion.div
-        className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-10 py-32 text-center lg:flex-row lg:gap-20 lg:text-left"
+        className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-5 py-39 text-center lg:flex-row lg:gap-20 lg:text-left"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -62,14 +56,14 @@ export default function Hero() {
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="relative"
           >
-            <div className="relative h-44 w-44 overflow-hidden rounded-full border border-white/10 shadow-2xl lg:h-56 lg:w-56">
+            <div className="relative h-52 w-52 overflow-hidden rounded-full border border-white/10 shadow-2xl lg:h-64 lg:w-64">
               <Image
                 src={hero.profileImage}
                 alt={hero.name}
                 fill
                 className="object-cover"
                 preload
-                sizes="(max-width: 1024px) 176px, 224px"
+                sizes="(max-width: 1024px) 208px, 256px"
               />
             </div>
             {/* Subtle glow rings */}
@@ -83,30 +77,23 @@ export default function Hero() {
           {/* Greeting + Name */}
           <motion.p
             variants={itemVariants}
-            className="mb-2 text-base font-light tracking-wide text-text-muted md:text-lg"
+            className="mb-3 text-2xl font-semibold tracking-normal md:text-2xl"
           >
             {hero.greeting}
           </motion.p>
 
           <motion.h1
             variants={itemVariants}
-            className="mb-4 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl"
+            className="mb-5 text-4xl font-bold tracking-tight md:text-6xl lg:text-6xl"
           >
             {hero.name}
           </motion.h1>
 
-          {/* Title */}
-          <motion.p
-            variants={itemVariants}
-            className="mb-6 text-lg font-light tracking-wide text-text-secondary md:text-xl"
-          >
-            {hero.title}
-          </motion.p>
 
           {/* Intro */}
           <motion.p
             variants={itemVariants}
-            className="mb-10 max-w-xl text-base font-light leading-relaxed text-text-muted"
+            className="mb-12 max-w-2xl text-2xl font-medium leading-relaxed text-text-muted"
           >
             {hero.intro}
           </motion.p>
@@ -114,48 +101,22 @@ export default function Hero() {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="mb-10 flex items-center gap-4"
+            className="flex items-center gap-5"
           >
             <button
               onClick={() => handleScrollTo("projects")}
               className="btn-secondary flex-1 justify-center md:flex-none"
             >
-              <ArrowDown size={16} />
+              <ArrowDown size={18} />
               View Projects
             </button>
             <button
               onClick={() => handleScrollTo("contact")}
               className="btn-secondary flex-1 justify-center md:flex-none"
             >
-              <Send size={16} />
+              <Send size={18} />
               Get In Touch
             </button>
-          </motion.div>
-
-          {/* Social links */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-5"
-          >
-            {hero.socials.map((social) => {
-              const Icon = socialIcons[social.platform];
-              return (
-                <a
-                  key={social.platform}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="group relative rounded-full p-2.5 transition-all duration-300"
-                >
-                  <span className="absolute inset-0 rounded-full border border-white/0 bg-white/0 transition-all duration-300 group-hover:border-white/10 group-hover:bg-white/5" />
-                  <Icon
-                    size={20}
-                    className="relative text-text-muted transition-colors duration-300 group-hover:text-white"
-                  />
-                </a>
-              );
-            })}
           </motion.div>
         </div>
       </motion.div>

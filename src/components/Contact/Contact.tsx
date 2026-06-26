@@ -5,9 +5,17 @@ import { useRef } from "react";
 import { Mail } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 import SectionWrapper from "@/components/SectionWrapper";
+import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from "@/components/Icons";
+
+const socialIcons = {
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
+  twitter: TwitterIcon,
+  instagram: InstagramIcon,
+};
 
 export default function Contact() {
-  const { contact } = portfolioData;
+  const { contact, hero } = portfolioData;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -18,7 +26,7 @@ export default function Contact() {
 
         <motion.div
           ref={ref}
-          className="glass-card mx-auto max-w-2xl p-10 md:p-14"
+          className="glass-card mx-auto max-w-2xl px-8 py-7 md:px-11 md:py-7"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{
@@ -50,6 +58,47 @@ export default function Contact() {
             <Mail size={18} />
             Say Hello
           </motion.a>
+
+          {/* Spacer */}
+          <motion.div
+            className="mt-8"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.55 }}
+          />
+
+          {/* Social links */}
+          <motion.div
+            className="flex items-center justify-center gap-3"
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.65 }}
+          >
+            {hero.socials.map((social, i) => {
+              const Icon = socialIcons[social.platform];
+              return (
+                <motion.a
+                  key={social.platform}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="group relative rounded-full p-3 transition-all duration-300"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.35, delay: 0.7 + i * 0.07 }}
+                  whileHover={{ scale: 1.15 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="absolute inset-0 rounded-full border border-white/0 bg-white/0 transition-all duration-300 group-hover:border-white/15 group-hover:bg-white/8" />
+                  <Icon
+                    size={22}
+                    className="relative text-text-muted transition-colors duration-300 group-hover:text-white"
+                  />
+                </motion.a>
+              );
+            })}
+          </motion.div>
         </motion.div>
       </div>
     </SectionWrapper>

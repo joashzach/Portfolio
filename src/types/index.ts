@@ -7,7 +7,6 @@ export interface Social {
 export interface HeroData {
   greeting: string;
   name: string;
-  title: string;
   intro: string;
   profileImage: string;
   socials: Social[];

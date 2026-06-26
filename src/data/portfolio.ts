@@ -2,11 +2,10 @@ import { PortfolioData } from "@/types";
 
 export const portfolioData: PortfolioData = {
   hero: {
-    greeting: "Hey there, I am",
+    greeting: "Hey there!  I am",
     name: "Joash Zachariah Sojan",
-    title: " ",
     intro:
-      "Hey, I'm a full-stack developer in the making who loves building websites and experimenting.",
+      "I'm a full-stack developer who loves building, learning and experimenting with technologies.",
     profileImage: "/images/profile.png",
     socials: [
       {
