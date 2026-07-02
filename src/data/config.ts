@@ -1,7 +1,7 @@
 import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
-  backgroundImage: "/images/background.jpg",
+  backgroundImage: "/images/background-1.jpg",
   siteTitle: "Joash Zachariah Sojan | Developer",
   siteDescription:
     "Full-stack developer crafting elegant, performant digital experiences with modern web technologies.",

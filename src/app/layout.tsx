@@ -28,18 +28,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable}>
       <body className="font-poppins antialiased">
-        {/* Fixed background image */}
+        {/* Fixed background */}
         <div
           className="fixed inset-0 z-0"
           style={{
-            backgroundImage: `url(${siteConfig.backgroundImage})`,
+            backgroundImage: "url('/images/background.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundAttachment: "fixed",
           }}
         />
-        {/* Dark overlay for readability */}
+        {/* Dark overlay to deepen the background */}
         <div className="bg-overlay" />
 
         {/* Main content */}

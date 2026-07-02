@@ -4,8 +4,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown, Send } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
+import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from "@/components/Icons";
 
-
+const socialIcons = {
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
+  twitter: TwitterIcon,
+  instagram: InstagramIcon,
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -62,7 +68,7 @@ export default function Hero() {
                 alt={hero.name}
                 fill
                 className="object-cover"
-                preload
+                priority
                 sizes="(max-width: 1024px) 208px, 256px"
               />
             </div>
@@ -101,7 +107,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center gap-5"
+            className="flex items-center gap-5 mb-8 w-full justify-center lg:justify-start"
           >
             <button
               onClick={() => handleScrollTo("projects")}
@@ -117,6 +123,32 @@ export default function Hero() {
               <Send size={18} />
               Get In Touch
             </button>
+          </motion.div>
+
+          {/* Social Links under CTAs */}
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center gap-2 w-full justify-center lg:justify-start"
+          >
+            {hero.socials.map((social) => {
+              const Icon = socialIcons[social.platform as keyof typeof socialIcons];
+              if (!Icon) return null;
+              return (
+                <a
+                  key={social.platform}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="rounded-full p-3"
+                >
+                  <Icon
+                    size={22}
+                    className="text-text-muted"
+                  />
+                </a>
+              );
+            })}
           </motion.div>
         </div>
       </motion.div>

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
+  { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
@@ -12,27 +13,35 @@ const navLinks = [
 ];
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
-      // Determine active section
       const sections = navLinks.map((link) => link.href.slice(1));
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
+      let currentActive = "hero"; // Default to hero
+
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 150) {
-            setActiveSection(sections[i]);
-            break;
+          // If the element crosses the middle of the viewport
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            currentActive = id;
           }
         }
+      });
+
+      // Special case: if we are at the very bottom, highlight the last section
+      if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
+        currentActive = sections[sections.length - 1];
       }
+
+      setActiveSection(currentActive);
     };
+
+    // Run once on mount to set initial section
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -40,6 +49,10 @@ export default function Navigation() {
 
   const handleNavClick = (href: string) => {
     setIsMobileOpen(false);
+    if (href === "#hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const el = document.querySelector(href);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -51,38 +64,22 @@ export default function Navigation() {
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "glass-nav" : ""
-          }`}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="fixed top-0 left-0 right-0 z-50 w-full bg-[rgb(0,1,10)] border-b border-white/10"
       >
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-5 md:px-8">
-          {/* Logo / Name */}
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-lg font-semibold tracking-tight text-white transition-opacity hover:opacity-80"
-          >
-            JZ<span className="text-text-muted">.</span>
-          </button>
-
+        <div className="flex w-full items-center justify-center px-6 py-4">
           {/* Desktop links */}
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
                 className={`relative text-sm font-light tracking-wide transition-all duration-300 ${activeSection === link.href.slice(1)
                     ? "text-white"
-                    : "text-text-muted hover:text-text-secondary"
+                    : "text-white/60 hover:text-white"
                   }`}
               >
                 {link.label}
-                {activeSection === link.href.slice(1) && (
-                  <motion.span
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1.5 left-0 right-0 h-px bg-white/40"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
               </button>
             ))}
           </div>
@@ -90,7 +87,7 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="text-white md:hidden"
+            className="absolute right-6 text-white md:hidden"
             aria-label="Toggle menu"
           >
             {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -106,12 +103,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex items-center justify-center"
-            style={{
-              background: "rgba(0, 0, 0, 0.85)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-            }}
+            className="fixed inset-0 z-40 flex items-center justify-center bg-[rgb(0,1,10)]"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}

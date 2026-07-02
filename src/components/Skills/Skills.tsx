@@ -18,6 +18,7 @@ export default function Skills() {
         {skills.map((skillGroup, groupIndex) => (
           <motion.div
             key={skillGroup.category}
+            className="glass-card p-6 md:p-8 max-w-2xl "
             initial={{ opacity: 0, y: 25 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{
@@ -26,9 +27,12 @@ export default function Skills() {
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
           >
-            <h3 className="mb-4 text-sm font-medium uppercase tracking-[0.15em] text-text-muted">
-              {skillGroup.category}
-            </h3>
+            <div className="mb-7 flex items-center gap-3">
+              <div className="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
+              <h3 className="text-[1.15rem] font-medium tracking-wide text-white/90">
+                {skillGroup.category}
+              </h3>
+            </div>
             <div className="flex flex-wrap gap-3">
               {skillGroup.tools.map((tool, toolIndex) => (
                 <motion.span

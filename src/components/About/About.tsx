@@ -11,12 +11,12 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <SectionWrapper id="about">
+    <SectionWrapper id="about" className="text-left">
       <h2 className="section-heading">About Me</h2>
 
       <motion.div
         ref={ref}
-        className="glass-card p-8 md:p-12"
+        className="glass-card p-8 md:p-12 w-full text-left"
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}

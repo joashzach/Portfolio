@@ -3,11 +3,13 @@ import About from "@/components/About/About";
 import Skills from "@/components/Skills/Skills";
 import Projects from "@/components/Projects/Projects";
 import Contact from "@/components/Contact/Contact";
+import Navigation from "@/components/Navigation";
 import { portfolioData } from "@/data/portfolio";
 
 export default function Home() {
   return (
     <>
+      <Navigation />
       <Hero />
       <About />
       <Skills />
@@ -15,9 +17,9 @@ export default function Home() {
       <Contact />
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-white/6 px-6 py-8 text-center">
-        <p className="text-xs font-light tracking-wide text-text-muted">
-          © {new Date().getFullYear()} {portfolioData.hero.name}.
+      <footer className="relative z-10 border-t border-white/10 px-6 py-4 text-center bg-[rgb(0,1,10)]">
+        <p className="text-sm font-light text-white/60">
+          © {new Date().getFullYear()} {portfolioData.hero.name}. All rights reserved.
         </p>
       </footer>
     </>

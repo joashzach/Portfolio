@@ -30,10 +30,10 @@ export const portfolioData: PortfolioData = {
       },
     ],
   },
-
   about: {
     description: [
-      "I'm an aspiring full-stack developer with a strong foundation in frontend development and a passion for building modern web applications. Currently, I'm expanding my skills through the MERN stack, focusing on creating scalable, user-friendly experiences while continuously learning and improving as a developer.",
+      "I build full-stack web applications with a focus on backend engineering. Using technologies like Node.js, Express, MongoDB etc. I enjoy developing scalable APIs, designing efficient data models, and creating applications that are clean, maintainable, and user-focused.",
+      "Beyond building features, I'm passionate about understanding the principles behind great software—from system design and application architecture to performance optimization and writing code that's easy to extend. I enjoy breaking down complex problems into simple, reliable solutions and building software that's designed to evolve as it grows.",
     ],
   },
 
