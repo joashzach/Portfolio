@@ -18,7 +18,7 @@ export default function Skills() {
         {skills.map((skillGroup, groupIndex) => (
           <motion.div
             key={skillGroup.category}
-            className="glass-card p-6 md:p-8 max-w-2xl "
+            className="glass-card p-5 md:p-8 max-w-2xl "
             initial={{ opacity: 0, y: 25 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{

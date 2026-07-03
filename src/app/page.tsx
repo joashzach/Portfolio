@@ -19,7 +19,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/10 px-6 py-4 text-center bg-[rgb(0,1,10)]">
         <p className="text-sm font-light text-white/60">
-          © {new Date().getFullYear()} {portfolioData.hero.name}. All rights reserved.
+          © {new Date().getFullYear()} {portfolioData.hero.name}
         </p>
       </footer>
     </>

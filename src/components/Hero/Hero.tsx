@@ -50,7 +50,7 @@ export default function Hero() {
       className="relative flex items-center px-6 md:px-8"
     >
       <motion.div
-        className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-5 py-39 text-center lg:flex-row lg:gap-20 lg:text-left"
+        className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-5 py-20 text-center lg:flex-row lg:gap-20 lg:text-left lg:py-32"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -62,7 +62,7 @@ export default function Hero() {
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="relative"
           >
-            <div className="relative h-52 w-52 overflow-hidden rounded-full border border-white/10 shadow-2xl lg:h-64 lg:w-64">
+            <div className="relative h-40 w-40 overflow-hidden rounded-full border border-white/10 shadow-2xl md:h-52 md:w-52 lg:h-64 lg:w-64">
               <Image
                 src={hero.profileImage}
                 alt={hero.name}
@@ -90,7 +90,7 @@ export default function Hero() {
 
           <motion.h1
             variants={itemVariants}
-            className="mb-8 text-4xl font-bold tracking-tight md:text-5xl lg:text-5xl"
+            className="mb-8 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-5xl"
           >
             {hero.name}
           </motion.h1>
@@ -105,25 +105,7 @@ export default function Hero() {
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-5 mb-8 w-full justify-center lg:justify-start"
-          >
-            <button
-              onClick={() => handleScrollTo("projects")}
-              className="btn-secondary flex-1 justify-center md:flex-none"
-            >
-              <ArrowDown size={18} />
-              View Projects
-            </button>
-            <button
-              onClick={() => handleScrollTo("contact")}
-              className="btn-secondary flex-1 justify-center md:flex-none"
-            >
-              <Send size={18} />
-              Get In Touch
-            </button>
-          </motion.div>
+          <div className="mb-4"></div>
 
           {/* Social Links under CTAs */}
           <motion.div

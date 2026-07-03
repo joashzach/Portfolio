@@ -67,67 +67,25 @@ export default function Navigation() {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="fixed top-0 left-0 right-0 z-50 w-full bg-[rgb(0,1,10)] border-b border-white/10"
       >
-        <div className="flex w-full items-center justify-center px-6 py-4">
-          {/* Desktop links */}
-          <div className="hidden items-center gap-10 md:flex">
+        <div className="flex w-full items-center justify-center px-4 py-4 md:px-6">
+          {/* Nav links */}
+          <div className="flex items-center gap-4 sm:gap-8 md:gap-10">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`relative text-sm font-light tracking-wide transition-all duration-300 ${activeSection === link.href.slice(1)
+                className={`relative text-[0.7rem] sm:text-[0.8rem] md:text-sm font-light tracking-wide transition-all duration-300 ${
+                  activeSection === link.href.slice(1)
                     ? "text-white"
                     : "text-white/60 hover:text-white"
-                  }`}
+                }`}
               >
                 {link.label}
               </button>
             ))}
           </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="absolute right-6 text-white md:hidden"
-            aria-label="Toggle menu"
-          >
-            {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
         </div>
       </motion.nav>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {isMobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex items-center justify-center bg-[rgb(0,1,10)]"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-              className="flex flex-col items-center gap-8"
-            >
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.href}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15 + i * 0.08 }}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-2xl font-light tracking-wide text-white/80 transition-colors hover:text-white"
-                >
-                  {link.label}
-                </motion.button>
-              ))}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
