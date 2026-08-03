@@ -4,13 +4,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown, Send } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
-import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from "@/components/Icons";
+import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon, LeetcodeIcon } from "@/components/Icons";
 
 const socialIcons = {
   github: GithubIcon,
   linkedin: LinkedinIcon,
   twitter: TwitterIcon,
   instagram: InstagramIcon,
+  leetcode: LeetcodeIcon,
 };
 
 const containerVariants = {
@@ -50,47 +51,43 @@ export default function Hero() {
       className="relative flex items-center px-6 md:px-8"
     >
       <motion.div
-        className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-5 py-20 text-center lg:flex-row lg:gap-20 lg:text-left lg:py-32"
+        className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-5 py-16 text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Profile image */}
         <motion.div variants={itemVariants} className="shrink-0">
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative"
-          >
-            <div className="relative h-40 w-40 overflow-hidden rounded-full border border-white/10 shadow-2xl md:h-52 md:w-52 lg:h-64 lg:w-64">
+          <div className="relative">
+            <div className="relative h-28 w-28 overflow-hidden rounded-full border border-white/10 shadow-2xl md:h-36 md:w-36 lg:h-44 lg:w-44">
               <Image
                 src={hero.profileImage}
                 alt={hero.name}
                 fill
                 className="object-cover"
                 priority
-                sizes="(max-width: 1024px) 208px, 256px"
+                sizes="(max-width: 1024px) 144px, 176px"
               />
             </div>
             {/* Subtle glow rings */}
             <div className="absolute -inset-2 rounded-full border border-white/5" />
             <div className="absolute -inset-4 rounded-full border border-white/2" />
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Text content */}
-        <div className="flex flex-col items-center lg:items-start">
+        <div className="flex flex-col items-center">
           {/* Greeting + Name */}
           <motion.p
             variants={itemVariants}
-            className="mb-3 text-2xl font-semibold tracking-normal md:text-2xl"
+            className="mb-2 text-xl font-semibold tracking-normal md:text-xl"
           >
             {hero.greeting}
           </motion.p>
 
           <motion.h1
             variants={itemVariants}
-            className="mb-8 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-5xl"
+            className="mb-6 text-3xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-4xl"
           >
             {hero.name}
           </motion.h1>
@@ -99,7 +96,7 @@ export default function Hero() {
           {/* Intro */}
           <motion.p
             variants={itemVariants}
-            className="mb-7 max-w-2xl text-1xl md:text-2xl font-light leading-relaxed text-text-muted"
+            className="mb-6 max-w-2xl text-base md:text-xl font-light leading-relaxed text-text-muted"
           >
             {hero.intro}
           </motion.p>
@@ -110,7 +107,7 @@ export default function Hero() {
           {/* Social Links under CTAs */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center gap-2 w-full justify-center lg:justify-start"
+            className="flex items-center gap-2 w-full justify-center"
           >
             {hero.socials.map((social) => {
               const Icon = socialIcons[social.platform as keyof typeof socialIcons];
@@ -125,7 +122,7 @@ export default function Hero() {
                   className="rounded-full p-3"
                 >
                   <Icon
-                    size={22}
+                    size={18}
                     className="text-text-muted"
                   />
                 </a>

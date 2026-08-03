@@ -16,16 +16,16 @@ export default function About() {
 
       <motion.div
         ref={ref}
-        className="glass-card p-5 md:p-10 w-full text-left"
+        className="glass-card p-5 md:p-8 w-full max-w-[800px] mx-auto text-left"
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className="space-y-6">
+        <div className="space-y-4">
           {about.description.map((paragraph, index) => (
             <motion.p
               key={index}
-              className="text-base font-light leading-[1.8] text-text-secondary md:text-[1.0625rem]"
+              className="text-sm font-light leading-[1.75] text-text-secondary md:text-[0.95rem]"
               initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{

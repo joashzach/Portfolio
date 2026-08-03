@@ -1,5 +1,5 @@
 export interface Social {
-  platform: "github" | "linkedin" | "twitter" | "instagram";
+  platform: "github" | "linkedin" | "twitter" | "instagram" | "leetcode";
   url: string;
   label: string;
 }

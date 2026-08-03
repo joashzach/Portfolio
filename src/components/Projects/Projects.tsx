@@ -19,12 +19,12 @@ export default function Projects() {
 
       <div
         ref={ref}
-        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid w-full max-w-[920px] grid-cols-1 gap-6 mx-auto justify-center sm:grid-cols-2 lg:grid-cols-3"
       >
         {projects.map((project, index) => (
           <motion.div
             key={project.name}
-            className="glass-card group relative flex flex-col overflow-hidden"
+            className="glass-card glass-card-hover group relative flex flex-col overflow-hidden"
             initial={{ opacity: 0, y: 35 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{
@@ -33,36 +33,32 @@ export default function Projects() {
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
           >
-            {/* Project image */}
-            <div className="relative aspect-16/10 w-full overflow-hidden">
+            {/* Project Image */}
+            <div className="relative aspect-[16/10] w-full overflow-hidden">
               <Image
                 src={project.image}
                 alt={project.name}
                 fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 300px"
                 preload={index < 3}
               />
-              {/* Image overlay gradient */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
 
-              {/* Hover glow effect removed */}
-              <div className="absolute inset-0 bg-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
             </div>
 
             {/* Content */}
-            <div className="flex flex-1 flex-col p-6">
-              {/* Project name */}
-              <h3 className="mb-3 text-[1.35rem] font-medium tracking-wide text-white drop-shadow-sm">
+            <div className="flex flex-1 flex-col p-3">
+              <h3 className="mb-2 text-[1rem] font-medium tracking-wide text-white drop-shadow-sm">
                 {project.name}
               </h3>
 
-              {/* Tech stack chips */}
-              <div className="mb-4 flex flex-wrap gap-2.5">
+              {/* Tech Stack */}
+              <div className="mb-3 flex flex-wrap gap-1">
                 {project.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-light text-white/70 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] backdrop-blur-sm"
+                    className="rounded-full border border-white/5 bg-white/[0.03] px-2 py-0.5 text-[0.63rem] font-light text-white/50 backdrop-blur-sm"
                   >
                     {tech}
                   </span>
@@ -70,30 +66,42 @@ export default function Projects() {
               </div>
 
               {/* Description */}
-              <p className="mb-5 flex-1 text-[0.95rem] font-light leading-relaxed text-white/50">
+              <p className="mb-3 flex-1 text-[0.78rem] font-light leading-relaxed text-white/70">
                 {project.description}
               </p>
 
               {/* Links */}
-              <div className="mt-auto flex items-center justify-center gap-5 pt-2">
+              <div className="mt-auto flex items-center justify-center gap-4 pt-1">
+                {/* Live Demo */}
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm font-medium tracking-wide text-white/70 transition-colors duration-300 hover:text-white"
+                  className="group/live inline-flex items-center gap-1.5 text-xs font-medium tracking-wide text-white/70 transition-colors duration-300 hover:text-white"
                 >
-                  <ExternalLink size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  Live Demo
+                  <span>Live Demo</span>
+
+                  <ExternalLink
+                    size={14}
+                    className="transition-transform duration-300 group-hover/live:-translate-y-0.5 group-hover/live:translate-x-0.5"
+                  />
                 </a>
-                <span className="h-4 w-px bg-white/10" />
+
+                <span className="h-3.5 w-px bg-white/10" />
+
+                {/* Source */}
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm font-medium tracking-wide text-white/70 transition-colors duration-300 hover:text-white"
+                  className="group/source inline-flex items-center gap-1.5 text-xs font-medium tracking-wide text-white/70 transition-colors duration-300 hover:text-white"
                 >
-                  <GithubIcon size={16} className="transition-transform duration-300 group-hover:scale-110" />
-                  Source
+                  <span>Source</span>
+
+                  <GithubIcon
+                    size={14}
+                    className="transition-transform duration-300 group-hover/source:scale-110"
+                  />
                 </a>
               </div>
             </div>

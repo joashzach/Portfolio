@@ -21,10 +21,10 @@ export default function SectionWrapper({
     <section
       id={id}
       ref={ref}
-      className={`py-section px-6 md:px-8 ${className}`}
+      className={`py-section px-6 md:px-8 overflow-hidden ${className}`}
     >
       <motion.div
-        className="mx-auto max-w-[1200px] flex flex-col items-center text-center"
+        className="mx-auto w-full max-w-[1200px] flex flex-col items-center text-center"
         style={{ zoom: 1.09 }}
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}

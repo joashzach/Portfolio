@@ -28,6 +28,11 @@ export const portfolioData: PortfolioData = {
         url: "https://instagram.com/joashzach",
         label: "Instagram",
       },
+      {
+        platform: "leetcode",
+        url: "https://leetcode.com/joashzach",
+        label: "LeetCode",
+      },
     ],
   },
   about: {
