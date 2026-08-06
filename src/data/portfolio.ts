@@ -65,7 +65,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       category: "Database & Deployment",
-      tools: ["PostgreSQL", "MongoDB", "Vercel", "Git", "GitHub"],
+      tools: ["PostgreSQL", "MongoDB", "Vercel", "Render", "Git", "GitHub"],
     },
   ],
 
